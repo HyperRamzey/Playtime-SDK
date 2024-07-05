@@ -1,0 +1,26 @@
+#pragma once
+#include <Windows.h>
+#include <cstdint>
+#include <string>
+#include <string_view>
+namespace _Script_CoreUObject {
+struct Class;
+}
+namespace _Script_SteamCore {
+#pragma pack(push, 1)
+struct RequestPlayersForGameResultCallback {
+    private: char pad_0[0x50]; public:
+    void* get_Result();
+    void* get_SearchID();
+    void* get_SteamIDPlayerFound();
+    void* get_SteamIDLobby();
+    void* get_PlayerAcceptState();
+    int32_t& get_PlayerIndex();
+    int32_t& get_TotalPlayersFound();
+    int32_t& get_TotalPlayersAcceptedGame();
+    int32_t& get_SuggestedTeamIndex();
+    void* get_UniqueGameID();
+    static _Script_CoreUObject::Class* static_class();
+}; // Size: 0x50
+#pragma pack(pop)
+}

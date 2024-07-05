@@ -1,0 +1,45 @@
+#pragma once
+#include <Windows.h>
+#include <cstdint>
+#include <string>
+#include <string_view>
+#include "..\_Script_CoreUObject\Vector.hpp"
+#include "MovementComponent.hpp"
+namespace _Script_CoreUObject {
+struct Class;
+}
+namespace _Script_Engine {
+struct HitResult;
+}
+namespace _Script_Engine {
+#pragma pack(push, 1)
+struct InterpToMovementComponent : public MovementComponent {
+    private: char pad_f0[0xa0]; public:
+    float& get_Duration();
+    bool get_bPauseOnImpact();
+    void set_bPauseOnImpact(bool value);
+    bool get_bSweep();
+    void set_bSweep(bool value);
+    void* get_TeleportType();
+    void* get_BehaviourType();
+    bool get_bCheckIfStillInWorld();
+    void set_bCheckIfStillInWorld(bool value);
+    bool get_bForceSubStepping();
+    void set_bForceSubStepping(bool value);
+    void* get_OnInterpToReverse();
+    void* get_OnInterpToStop();
+    void* get_OnWaitBeginDelegate();
+    void* get_OnWaitEndDelegate();
+    void* get_OnResetDelegate();
+    float& get_MaxSimulationTimeStep();
+    int32_t& get_MaxSimulationIterations();
+    void* get_ControlPoints();
+    static _Script_CoreUObject::Class* static_class();
+    void StopSimulating(_Script_Engine::HitResult& HitResult);
+    void RestartMovement(float InitialDirection);
+    void ResetControlPoints();
+    void FinaliseControlPoints();
+    void AddControlPointPosition(_Script_CoreUObject::Vector Pos, bool bPositionIsRelative);
+}; // Size: 0x190
+#pragma pack(pop)
+}
